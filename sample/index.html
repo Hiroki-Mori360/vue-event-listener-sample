@@ -5,10 +5,14 @@
     <title>Vue.js Sample</title>
   </head>
   <body>
+    <!-- index.js内のVue本体のインスタンス化によりcontentsの内側がVue.jsの管理に置かれる -->
     <div id="contents">
-      <child-component></child-component>
+      <parent-component></parent-component>
     </div>
+
+    <!-- Vue本体のJavaScriptをCDNからインポート -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Vueを利用するJavaScriptをインポート -->
     <script src="./index.js"></script>
   </body>
 </html>
