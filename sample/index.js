@@ -1,4 +1,6 @@
 // 子コンポーネント
+// タイトル変更ボタンクリック時にclickイベント → clickイベントリスナ → handleOnClickというコールバック関数を呼び出す
+// コールバック関数で'changeTitle'というイベントを発生させ、入力されている文字列を引数として渡す
 const Child = {
   name: 'child-component',
   template:
@@ -32,8 +34,11 @@ const Parent = {
   },
   template:
   '<div>' +
-    '<h1>{{ title }}</h1>' +
-    '<child-component @changeTitle="handleOnChangeTitle"></child-component>' + // ここで子コンポーネントを利用. @changeTitleでリスナをセット
+    '<h1>{{ title }}</h1>' + // dataのtitleの値が表示される
+    // ここで子コンポーネントを利用. @changeTitleでリスナをセット
+    // changeTitleイベント時にはhandleOnChangeTitleというコールバック関数を呼び出す
+    // コールバック関数への引数は子コンポーネントでイベント発生時に渡した値
+    '<child-component @changeTitle="handleOnChangeTitle"></child-component>' +
   '</div>',
   data: function() {
     return {
