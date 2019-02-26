@@ -1,28 +1,28 @@
-const Devices = {
+// 子コンポーネント
+const Child = {
   template:
-  '<div class="device" v-on:click="popups">' +
-    '<div class="img-box">' +
-    '</div>' +
-    '<div class="info-box">' +
-        '<p>Name : {{ name }}</p>' +
-        '<p>price : {{ price }}</p>' +
-        '<p>end : {{ end }}</p>' +
-    '</div>' +
+  '<div>' +
+    '<input v-model="inputValue" type="text">' +
+    '<button @click="changeTitle">タイトル変更</button>' +
   '</div>',
   data: function() {
     return {
-      name: "Big Campain",
-      price: "$ -10",
-      end: "2018/06/01"
+      // inputの値
+      inputValue: ''
     }
   },
   methods: {
-    popups: function() {
-      alert("name : " + this.name +
-            "\nprice : " + this.price +
-            "\nend : " + this.end)
+    // ボタンをクリックされた時に呼び出すコールバック関数
+    changeTitle: function() {
+      // changeTitleというイベントを発生させる。inputに入力されている値を渡す
+      this.$emit('changeTitle', this.inputValue)
     }
   }
+}
+
+// 親コンポーネント
+const Parent = {
+  
 }
 
 // Vue本体のインスタンスを作成する。
@@ -30,7 +30,7 @@ const Devices = {
 new Vue({
   el: '#contents',
   components: {
-    // <device-template></device-template>というタグで利用できるようになる。
-    'device-template': Devices
+    // <child-component></child-component>というタグで利用できるようになる。
+    'child-component': Child
   }
 })
